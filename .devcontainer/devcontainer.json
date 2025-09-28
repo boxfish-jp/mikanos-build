@@ -1,0 +1,23 @@
+{
+	"name": "Ubuntu Desktop 22.04",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/desktop-lite:1": {
+			"password": "dev",
+			"webPort": "6080"
+		}
+	},
+	"runArgs": ["-p", "0.0.0.0:6080:6080"],
+	"forwardPorts": [],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				// "ms-vscode.cpptools",
+				// "ms-python.python"
+				// その他、プロジェクトで必要な拡張機能を追加
+			]
+		}
+	}
+}
