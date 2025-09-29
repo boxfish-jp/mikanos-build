@@ -3,13 +3,29 @@
 	"build": {
 		"dockerfile": "Dockerfile"
 	},
+	
+
+  	// 2. ログインユーザーをosuserに指定
+  	"remoteUser": "osuser",
+
+	"workspaceMount": "source=${localWorkspaceFolder},target=/home/osuser/osbook,type=bind,consistency=cached",
+
+	// 1. VS Codeが開く場所をosuserのホームディレクトリ内のosbookに指定
+  	"workspaceFolder": "/home/osuser/osbook",
+	
+  	// 3. コンテナ作成後に実行するコマンド
+  	// マウントポイントの所有者をosuserに変更して書き込み可能にする
+  	"postCreateCommand": "chown -R osuser:osuser /home/osuser",
+
 	"features": {
 		"ghcr.io/devcontainers/features/desktop-lite:1": {
+			"username": "osuser",
 			"password": "dev",
 			"webPort": "6080"
 		}
 	},
 	"runArgs": ["-p", "0.0.0.0:6080:6080"],
+	"privileged": true,
 	"forwardPorts": [],
 	"customizations": {
 		"vscode": {
