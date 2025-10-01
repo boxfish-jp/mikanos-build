@@ -27,5 +27,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     dosfstools\
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    vim 
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # DEBIAN_FRONTENDをリセット
 ENV DEBIAN_FRONTEND=dialog
